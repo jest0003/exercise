@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simpel Lommeregner</title>
+    <script type="module" src="index.js"></script>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <section>
+      <label for="no_1">første tal</label>
+      <input name="no_1" type="text" id="no_1" />
+      <select name="tegn" id="mat_tegn">
+        <option value="Vælg regneart" for="tegn">Vælg regneart</option>
+        <option value="plus">+</option>
+        <option value="minus">-</option>
+        <option value="gange">*</option>
+        <option value="divider">/</option>
+      </select>
+      <label for="no_2">andet tal</label>
+      <input name="no_2" type="text" id="no_2" />
+      <button id="beregn">Beregn</button>
+      <p type="text" id="resultat"></p>
+    </section>
+  </body>
+</html>
