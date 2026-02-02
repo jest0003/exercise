@@ -53,7 +53,7 @@ function klik(evt) {
       result = no_1 * no_2;
     }
 
-    updateScreen("" + result.toString());
+    updateScreen("" + result);
     
   } else if (typeOfInput === "CLEAR") {
 
