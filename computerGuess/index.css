@@ -1,0 +1,18 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+}
+img {
+    height: 300px;
+    width: auto;
+}
+section {display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+}
+button {
+    margin: 10px;
+}

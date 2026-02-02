@@ -10,6 +10,7 @@ startGame.addEventListener("click", function () {
   number = Math.floor((min + max) / 2);
   document.querySelector(".computeranswer").innerHTML =
     "Jeg gætter på " + number;
+    document.querySelector("#picture").innerHTML = '<img src="thinking_cat.jpg" alt=""></img>';
 
   tooHigh.addEventListener("click", (e) => {
     max = number;
@@ -31,7 +32,10 @@ startGame.addEventListener("click", function () {
 
   youWon.addEventListener("click", (e) => {
     document.querySelector(".computeranswer").innerHTML = "Du vandt!";
+    document.querySelector("#picture").innerHTML = '<img src="happy_cat.jpg" alt=""></img>';
     e.preventDefault();
+    min = 0;
+    max = 100;
   });
 });
 
@@ -41,6 +45,3 @@ startGame.addEventListener("click", function () {
     "Jeg gætter på " + number;
   console.log("Computer gætter:", number);
  }
-
-// computer vandt, men skal gætte igen
-youWon.addEventListener("click", youWon);
