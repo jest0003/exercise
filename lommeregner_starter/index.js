@@ -17,21 +17,44 @@ function klik(evt) {
   // hvilken salgs input er det: "num" "regneart" "ligmed" "CLEAR"
 
   typeOfInput = whatTypeOfInput(btnClicked);
+
+
   console.log("typeOfInput:", typeOfInput);
   
   if (typeOfInput === "num") {
-    if (regneArt === "") {
-      firstNumVal += btnClicked;
-    } else {
-      // ellers → andet tal
-      secondNumVal += btnClicked;
-    }
+   if (regneArt === "") {
+    firstNumVal += btnClicked;
+    console.log("firstNumVal", firstNumVal)
+   }
+   else {
+    secondNumVal += btnClicked;
+    console.log ("secondNumVal", secondNumVal)
+   }
   } else if (typeOfInput === "regneart") {
-    // hvis det er en regneart, så gem den
+    if (firstNumVal !== "" && regneArt === "") {
+      regneArt = btnClicked;
+      console.log("regneArt:", regneArt)
+    }
   } else if (typeOfInput === "ligmed") {
-    // hvis det er ligmed, så regn regnestykket ud med de gemte værdier
-    // ligesom i den simple lommeregner.  Der skal parseInt() på strings til tal
-    // skriv resultatet til skærmen med updateScreen()
+    const no_1 =parseInt(firstNumVal);
+    const no_2 =parseInt(secondNumVal);
+    let result;
+
+    if (regneArt === "+") {
+      result = no_1 + no_2;
+    }
+    if (regneArt=== "-") {
+      result = no_1 -no_2;
+    }
+    if (regneArt=== "/") {
+      result = no_1 / no_2;
+    }
+    if (regneArt=== "*") {
+      result = no_1 * no_2;
+    }
+
+    updateScreen("" + result.toString());
+    
   } else if (typeOfInput === "CLEAR") {
 
     resetScreen();
@@ -66,6 +89,9 @@ function updateScreen(chars) {
   display.value = displayContent;
 }
 function resetScreen() {
+  firstNumVal = "";
+  secondNumVal = "";
+  regneArt = "";
   displayContent = "";
   display.value = "0";
 }
