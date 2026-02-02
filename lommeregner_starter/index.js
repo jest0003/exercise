@@ -1,4 +1,3 @@
-// query selector til displayet
 const display = document.querySelector(".display");
 // fanger alle kanapperne der kan trykkes på og sætter en klik event på dem(dem der ikke er disabled i HTML)
 document.querySelectorAll(".key").forEach((elm) => {
@@ -12,16 +11,21 @@ let secondNumVal = "";
 let regneArt = "";
 
 function klik(evt) {
-  // hiver værdien af data-func attributten ud af knapperne i HTML
   const btnClicked = evt.target.dataset.func;
-  // skriver det der er klikket på til lommeregnerens skærm
+  
   updateScreen(btnClicked);
   // hvilken salgs input er det: "num" "regneart" "ligmed" "CLEAR"
+
   typeOfInput = whatTypeOfInput(btnClicked);
   console.log("typeOfInput:", typeOfInput);
+  
   if (typeOfInput === "num") {
-    // hvis det er et tal, så tjek om det er første eller andet tal der skal gemmes(!) og husk at tallene er strings
-    // og det er en fordel her, men ikke nå der skal regnes
+    if (regneArt === "") {
+      firstNumVal += btnClicked;
+    } else {
+      // ellers → andet tal
+      secondNumVal += btnClicked;
+    }
   } else if (typeOfInput === "regneart") {
     // hvis det er en regneart, så gem den
   } else if (typeOfInput === "ligmed") {
@@ -29,8 +33,7 @@ function klik(evt) {
     // ligesom i den simple lommeregner.  Der skal parseInt() på strings til tal
     // skriv resultatet til skærmen med updateScreen()
   } else if (typeOfInput === "CLEAR") {
-    // reset alt: lav en reset funktion der nulstiller alle variabler
-    // skærmen bliver nulstillet med resetScreen()
+
     resetScreen();
   }
 }
