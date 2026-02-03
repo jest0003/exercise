@@ -1,21 +1,19 @@
 
 const list = document.querySelector("ul");
 
-const li = document.createElement("li");
-li.style.setProperty("--height", "30");
-list.appendChild(li);
-
 const columnArray = [];
 
 setInterval(generateColumns, 1000);
 
 function generateColumns () {
-    columnArray.push(Math.round(Math.random()* 100));
+    const solje =Math.round(Math.random()* 100);
+    columnArray.push(solje);
    console.log ("columnArray", columnArray);
+   let li = document.createElement("li");
+   li.style.setProperty("--height", solje);
+   list.appendChild(li);
    if (columnArray.length > 20) {
-    columnArray.shift()
+    columnArray.shift();
+    list.firstElementChild.remove();
    }
 }
-
-//length for længde
-//shift til start af array
