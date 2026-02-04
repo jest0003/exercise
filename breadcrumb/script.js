@@ -14,3 +14,30 @@ const bc = [{ name: "Hvidevarer", link: "/hvidevarer" },
     { name: "Vaskemaskiner", link: "/hvidevarer/vaskemaskiner" },
     { name: "Bosch", link: "/hvidevarer/vaskemaskiner/bosch/" },];
 
+const btn = document.querySelector("#btn");
+const nav = document.querySelector("#show_bc");
+
+btn.addEventListener("click", generate);
+
+function generate () {
+    console.log ("hej");
+    const ul = document.createElement("ul");
+    bc.forEach((item, index) => {
+        const li = document.createElement("li");
+
+        if (index < bc.length -1) {
+            const link = document.createElement("a");
+            link.href = item.link;
+            link.textContent = item.name;
+
+            li.appendChild(link);
+            li.innerHTML += " /";
+        }
+        else {
+            li.textContent = item.name;
+        }
+
+        ul.appendChild(li);
+    })
+    nav.appendChild(ul);
+}
