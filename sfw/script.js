@@ -4,13 +4,14 @@ const curseWords = [  {bad: "var", good: "const", },
 
 const sfw_btn = document.querySelector("#sfw");
 let isItClicked = false;
-let theText = document.querySelector("p").textContent;
+const p = document.querySelector("p");
 
 sfw_btn.addEventListener("click", klik);
 
 function klik () {
     if (isItClicked) {
          console.log("KLIKKED");
+         alert("Dette er allerede SFW");
 
     }
     else {
@@ -21,9 +22,9 @@ function klik () {
 }
 
 function sfw () {
-    console.log("theText", theText);
+    let theText = p.textContent;
     curseWords.forEach((word) => {
-    console.log("Bad word", word.bad);
-    console.log("Good word", word.good);
+      theText = theText.replaceAll(word.bad, word.good);
     });
+    p.textContent = theText;
 }
