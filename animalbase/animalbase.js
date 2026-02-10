@@ -22,6 +22,7 @@ function start( ) {
 
 function registerButtons() {
     document.querySelectorAll("[data-action='filter']").forEach(button => button.addEventListener("click", selectFilter));
+    document.querySelectorAll("[data-action='sort']").forEach(button => button.addEventListener("click", selectSort));
 }
 
 
@@ -74,6 +75,12 @@ function isCat(animal) {
 }
 function isDog(animal) {
     return animal.type === "dog";
+}
+
+function selectSort(e) {
+const sort = e.target.dataset.sort;
+console.log(sort);
+sortList(sort);
 }
 
 function sortList(sortBy) {
