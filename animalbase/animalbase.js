@@ -86,52 +86,62 @@ sortList(sort);
 function sortList(sortBy) {
     let sortedList = allAnimals;
 
-    if (sortBy === "name"){
-    sortedList = sortedList.sort(sortByName);
+    sortedList= sortedList.sort(sortByTitle)
+    function sortByTitle(animalA, animalB) {
+    if (animalA[sortBy] < animalB[sortBy]) {
+        return -1;
+    } else {
+        return 1;
     }
-    if (sortBy === "type"){
-    sortedList = sortedList.sort(sortByType);
     }
-    if (sortBy === "desc"){
-    sortedList = sortedList.sort(sortByDesc);
-    }
-    if (sortBy === "age"){
-    sortedList = sortedList.sort(sortByAge);
-    }
+
+
+    //if (sortBy === "name"){
+    //sortedList = sortedList.sort(sortByName);
+    //}
+    //if (sortBy === "type"){
+    //sortedList = sortedList.sort(sortByType);
+    //}
+    //if (sortBy === "desc"){
+    //sortedList = sortedList.sort(sortByDesc);
+    //}
+    //if (sortBy === "age"){
+    //sortedList = sortedList.sort(sortByAge);
+    //}
     displayList(sortedList);
 }
 
-function sortByName(animalA, animalB) {
-    if (animalA.name < animalB.name) {
-        return -1;
-    } else {
-        return 1;
-    }
-}
+//function sortByName(animalA, animalB) {
+//  if (animalA.name < animalB.name) {
+//     return -1;
+//    } else {
+//        return 1;
+//    }
+//}
 
-function sortByType(animalA, animalB) {
-    if (animalA.type < animalB.type) {
-        return -1;
-    } else {
-        return 1;
-    }
-}
+//function sortByType(animalA, animalB) {
+//    if (animalA.type < animalB.type) {
+//        return -1;
+//    } else {
+//        return 1;
+//    }
+//}
 
-function sortByDesc(animalA, animalB) {
-    if (animalA.desc < animalB.desc) {
-        return -1;
-    } else {
-        return 1;
-    }
-}
+//function sortByDesc(animalA, animalB) {
+//    if (animalA.desc < animalB.desc) {
+//        return -1;
+//    } else {
+//        return 1;
+//    }
+//}
 
-function sortByAge(animalA, animalB) {
-    if (animalA.age < animalB.age) {
-        return -1;
-    } else {
-        return 1;
-    }
-}
+//function sortByAge(animalA, animalB) {
+//    if (animalA.age < animalB.age) {
+//        return -1;
+//    } else {
+//        return 1;
+//    }
+//}
 
 function displayList(animals) {
     // clear the list
