@@ -16,8 +16,12 @@ function start( ) {
     console.log("ready");
 
     // TODO: Add event-listeners to filter and sort buttons
-
+    registerButtons();
     loadJSON();
+}
+
+function registerButtons() {
+    document.querySelectorAll("[data-action='filter']").forEach(button => button.addEventListener("click", selectFilter));
 }
 
 
@@ -30,13 +34,13 @@ async function loadJSON() {
 }
 
 function prepareObjects( jsonData ) {
-    allAnimals = jsonData.map( preapareObject );
+    allAnimals = jsonData.map( prepareObject );
 
     // TODO: This might not be the function we want to call first
     displayList(allAnimals);
 }
 
-function preapareObject( jsonObject ) {
+function prepareObject( jsonObject ) {
     const animal = Object.create(Animal);
     
     const texts = jsonObject.fullname.split(" ");
@@ -47,7 +51,30 @@ function preapareObject( jsonObject ) {
 
     return animal;
 }
+function selectFilter(e) {
+const filter = e.target.dataset.filter;
+console.log(filter);
+filterList(filter);
+}
 
+function filterList(animalType) {
+    let filteredList = allAnimals;
+    if (animalType === "cat") {
+        filteredList = allAnimals.filter(isCat);
+    }
+    if (animalType === "dog") {
+        filteredList = allAnimals.filter(isDog);
+    }
+    
+    displayList (filteredList);
+}
+
+function isCat(animal) {
+    return animal.type === "cat";
+}
+function isDog(animal) {
+    return animal.type === "dog";
+}
 
 function displayList(animals) {
     // clear the list
