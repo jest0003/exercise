@@ -14,8 +14,6 @@ const Animal = {
 
 function start( ) {
     console.log("ready");
-
-    // TODO: Add event-listeners to filter and sort buttons
     registerButtons();
     loadJSON();
 }
@@ -79,19 +77,33 @@ function isDog(animal) {
 
 function selectSort(e) {
 const sort = e.target.dataset.sort;
-console.log(sort);
-sortList(sort);
+const sortDir = e.target.dataset.sortDirection;
+
+if (sortDir === "asc") {
+    e.target.dataset.sortDirection = "nedad";
+} else {
+     e.target.dataset.sortDirection = "asc";
+}
+console.log("Kig her", sort, sortDir);
+sortList(sort, sortDir);
 }
 
-function sortList(sortBy) {
+
+function sortList(sortBy, sortDir) {
     let sortedList = allAnimals;
+    let direction = 1;
+    if (sortDir === "nedad") {
+        direction = -1;
+    } else {
+        direction = 1;
+    }
 
     sortedList= sortedList.sort(sortByTitle)
     function sortByTitle(animalA, animalB) {
     if (animalA[sortBy] < animalB[sortBy]) {
-        return -1;
+        return -1 * direction;
     } else {
-        return 1;
+        return 1 * direction;
     }
     }
 
