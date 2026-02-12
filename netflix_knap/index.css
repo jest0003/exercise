@@ -10,9 +10,35 @@ button {display: inline-block;
     margin-left: 25px;
     padding: 10px;
     border-radius: 8px;
-    
+    position: relative;
+    z-index: 1;
+}
+
+span {
+    position: relative;
+    z-index: 2;
+}
+
+button::before {
+    content: "";
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    position: absolute;
+    border-radius: 8px;
+    background-color: rgb(95, 249, 210);
+    z-index: 1;
+
+    animation: colorChange 5s linear forwards;
+}
+
+button.slut::before {
+    animation: none;
+    width: 100%;
 }
 
 @keyframes colorChange {
-    animation: name duration timing-function delay iteration-count direction fill-mode;
+    from {width: 0%; }
+    to   { width: 100%; }
 }
