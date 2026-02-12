@@ -12,6 +12,12 @@ const Animal = {
     age: 0
 };
 
+const settings = {
+    filterBy: "all",
+    sortBy: "name",
+    sortDir: "asc"
+}
+
 function start( ) {
     console.log("ready");
     registerButtons();
@@ -52,20 +58,24 @@ function prepareObject( jsonObject ) {
 }
 function selectFilter(e) {
 const filter = e.target.dataset.filter;
-console.log(filter);
-filterList(filter);
+setFilter(filter);
 }
 
-function filterList(animalType) {
-    let filteredList = allAnimals;
-    if (animalType === "cat") {
+function setFilter (filter) {
+    settings.filterBy = filter;
+buildList ();
+}
+
+function filterList(filteredList) {
+    //let filteredList = allAnimals;
+    if (settings.filterBy === "cat") {
         filteredList = allAnimals.filter(isCat);
     }
-    if (animalType === "dog") {
+    if (settings.filterBy === "dog") {
         filteredList = allAnimals.filter(isDog);
     }
     
-    displayList (filteredList);
+    return filteredList;
 }
 
 function isCat(animal) {
@@ -85,14 +95,20 @@ if (sortDir === "asc") {
      e.target.dataset.sortDirection = "asc";
 }
 console.log("Kig her", sort, sortDir);
-sortList(sort, sortDir);
+setSort(sort, sortDir);
+}
+
+function setSort (sortBy, sortDir) {
+settings.sortBy = sortBy;
+settings.sortDir = sortDir;
+buildList();
 }
 
 
-function sortList(sortBy, sortDir) {
-    let sortedList = allAnimals;
+function sortList(sortedList) {
+    //let sortedList = allAnimals;
     let direction = 1;
-    if (sortDir === "nedad") {
+    if (settings.sortDir === "nedad") {
         direction = -1;
     } else {
         direction = 1;
@@ -100,7 +116,7 @@ function sortList(sortBy, sortDir) {
 
     sortedList= sortedList.sort(sortByTitle)
     function sortByTitle(animalA, animalB) {
-    if (animalA[sortBy] < animalB[sortBy]) {
+    if (animalA[settings.sortBy] < animalB[settings.sortBy]) {
         return -1 * direction;
     } else {
         return 1 * direction;
@@ -120,7 +136,13 @@ function sortList(sortBy, sortDir) {
     //if (sortBy === "age"){
     //sortedList = sortedList.sort(sortByAge);
     //}
-    displayList(sortedList);
+    return sortedList;
+}
+
+function buildList() {
+const currentList = filterList (allAnimals);
+const sortedList = sortList(currentList);
+displayList(sortedList);
 }
 
 //function sortByName(animalA, animalB) {
