@@ -1,0 +1,18 @@
+section {
+    background-color: aquamarine;
+    width: 500px;
+    height: 300px;
+    
+}
+button {display: inline-block;
+    background-color: rgb(185, 95, 249);
+    margin-top: 25px;
+    margin-left: 25px;
+    padding: 10px;
+    border-radius: 8px;
+    
+}
+
+@keyframes colorChange {
+    animation: name duration timing-function delay iteration-count direction fill-mode;
+}
