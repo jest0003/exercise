@@ -13,6 +13,12 @@ button {display: inline-block;
     position: relative;
     z-index: 1;
 }
+#screen {display: flex;
+    height: 320px;
+    width: 320px;
+    border: solid 2px;
+    margin: 0 auto;
+}
 
 span {
     position: relative;
