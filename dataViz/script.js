@@ -12,3 +12,5 @@ fetch ("https://kea-alt-del.dk/kata-distortion/")
 })
 }
 setInterval(update, 10000)
+
+//voluome knap
