@@ -1,0 +1,25 @@
+img {
+    height: 64px;
+    width: auto;
+}
+section {
+    display: flex;
+    margin: 0 auto;
+    align-content: space-between;
+}
+h1 {
+    font-size: 160px;
+    margin: 0 auto;
+}
+p {
+    font-size: 40px;
+    margin: 0 auto;
+    margin-bottom: 30px;
+}
+article {
+    display: flex;
+    flex-direction: column;
+    border: solid 2px;
+    width: 350px;
+    height: 400px;
+}
